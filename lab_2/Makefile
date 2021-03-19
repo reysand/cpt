@@ -1,12 +1,12 @@
 # Target Files
-TASK1			= primes
-TASK2			= palindrome
+NAME			= point
 
 # Directories
 SRC_DIR			= src
 
 # Files
-SRCS			= $(SRC_DIR)/Primes.java $(SRC_DIR)/Palindrome.java
+SRCS			= $(SRC_DIR)/Point2d.java $(SRC_DIR)/Point3d.java \
+				  $(SRC_DIR)/Lab2.java
 
 # Programs
 SHELL			= /bin/bash
@@ -17,19 +17,14 @@ RM				= -rm -rf
 C_RESET			= \033[00m
 COLOR_G			= \033[32m
 
-## all:			Call targets 'primes' and 'palindrome'
+## all:			Call targets 'point'
 PHONY			+= all
-all:			$(TASK1) $(TASK2)
+all:			$(NAME)
 
-## primes:
-$(TASK1):
-	$(JC) -d $(CURDIR) $(word 1, $(SRCS))
-	@printf "$(COLOR_G)PASS:$(C_RESET)\t$(TASK1)\n"
-
-## palindrome:
-$(TASK2):
-	$(JC) -d $(CURDIR) $(word 2, $(SRCS))
-	@printf "$(COLOR_G)PASS:$(C_RESET)\t$(TASK2)\n"
+## point:
+$(NAME):
+	$(JC) -d $(CURDIR) $(SRCS)
+	@printf "$(COLOR_G)PASS:$(C_RESET)\t$(NAME)\n"
 
 ## help:		Show help message
 PHONY			+= help
@@ -48,8 +43,8 @@ help:			Makefile
 PHONY			+= clean
 clean:
 	$(RM) *.class
-	@printf "$(COLOR_G)PASS:$(C_RESET)\tmake clean\t[$(TASK1)]\n"
-	@printf "$(COLOR_G)PASS:$(C_RESET)\tmake clean\t[$(TASK2)]\n"
+	@printf "$(COLOR_G)PASS:$(C_RESET)\tmake clean\t[$(NAME)]\n"
+
 
 ## re:			Call targets 'clean' and 'all'
 PHONY			+= re
