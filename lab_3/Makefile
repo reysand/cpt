@@ -13,6 +13,7 @@ SRCS			= $(SRC_DIR)/AStarApp.java $(SRC_DIR)/AStarPathfinder.java	\
 # Programs
 SHELL			= /bin/bash
 JC				= javac
+JAR				= jar cfm
 RM				= -rm -rf
 
 # ANSI Escape Sequences
@@ -26,6 +27,8 @@ all:			$(NAME)
 ## astar:
 $(NAME):
 	$(JC) -d $(CURDIR) $(SRCS)
+	@echo "Main-Class: AStarApp" > Manifest.txt
+	$(JAR) $(NAME).jar Manifest.txt *.class
 	@printf "$(COLOR_G)PASS:$(C_RESET)\t$(NAME)\n"
 
 ## help:		Show help message
@@ -44,7 +47,7 @@ help:			Makefile
 ## clean:		Remove object files
 PHONY			+= clean
 clean:
-	$(RM) *.class
+	$(RM) *.class Manifest.txt $(NAME).jar
 	@printf "$(COLOR_G)PASS:$(C_RESET)\tmake clean\t[$(NAME)]\n"
 
 
