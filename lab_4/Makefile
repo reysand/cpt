@@ -23,7 +23,7 @@ COLOR_G			= \033[32m
 PHONY			+= all
 all:			$(NAME)
 
-## astar:
+## FractalExplorer:
 $(NAME):
 	$(JC) -d $(CURDIR) $(SRCS)
 	@echo "Main-Class: FractalExplorer" > Manifest.txt
